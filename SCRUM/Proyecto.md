@@ -17,7 +17,28 @@ Hemos divido esta semana de trabajo de la siguiente forma y este es el resultado
 
 
 #### Product backlog
-
+![Backlog_product](/SCRUM/CapturasSprint/backlogpractica1.png)
 #### Spring backlog
-
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog1.png)
 #### Burndown chart
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchart1.png)
+
+Observamos que la grafica no varia nada, ya que hemos considerado que estas tareas no tienen un valor potencial en el proyecto.
+
+## Segunda Semana
+
+En esta semana nos vamos a dedicar a la captura de requisitos del proyecto, esto lo realizaremos mediante una entrevista con el cliente y nos repartiremos las tareas de la siguiente forma:
+
+El scrum master, es decir Rafael Chacón Pérez, Realizara una entrevista al cliente de forma que actuara como intermediario entre el equipo y el cliente que ha pedido el proyecto.
+
+Despues todo el equipo, realizara un análisis de la entrevista de forma individual y por ultimo todos nos reuniremos de forma que podamos concretar todos los posibles requisitos que hemos podido detectar desde el punto de vista de cada uno de los integrantes.
+
+Todo esto sera una primera toma con los posibles requisitos que puede aparecer a primera vista en el proyecto, en los proximos sprints nos encargaremos de refinar y validar estos requisitos.
+
+#### Product backlog
+![Backlog_product](/SCRUM/CapturasSprint/backlogsprint2.png)
+#### Spring backlog
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+#### Burndown chart
+![Burndown_chart]
+
