@@ -55,16 +55,16 @@ Para realizar todas estas tareas hemos realizado 3 sprints:
 En este sprint nos encargaremos de transcribir los requisitos en lenguaje natural, clasificar los requisitos capturados y hacer un glosario de las palabras que puedan dar a confusión para el resto de integrantes del equipo o para el propio cliente.
 
 #### Spring Backlog
-![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintdefinicionrequisitos.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchartdefinición.png)
 
 ### Sprint Validación de requisitos.
 
 Hemos realizado varias reuniones de equipo y tambien nos hemos reunidos el cliente para verificar que hemos reunido todos los requisitos que nos han solicitado y si hemos añadido algunos, estos sigan la idea del proyecto inicial. Esta validación la hemos realizado mediante una auditoría
 
 #### Spring Backlog
-![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintvalidacion.png)
 #### Burndown Chart
 ![Burndown_chart]
 
@@ -75,7 +75,7 @@ Como ya comenten en la introducción de esta semana, en el modelado seguimos el 
 El desarrollo de cada uno de caso de uso y de actividad se ha repartido de forma equitativa al equipo de desarrollo.
 
 #### Spring Backlog
-![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintmodelado.png)
 #### Burndown Chart
 ![Burndown_chart]
 
