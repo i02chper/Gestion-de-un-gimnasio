@@ -66,7 +66,7 @@ Hemos realizado varias reuniones de equipo y tambien nos hemos reunidos el clien
 #### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/sprintvalidacion.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchartvalidacion.png)
 
 ### Sprint Modelado de requisitos.
 
