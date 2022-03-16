@@ -16,14 +16,14 @@ Hemos divido esta semana de trabajo de la siguiente forma y este es el resultado
   * Antecendentes (competencia) y Recursos: Rafael Chacón Pérez
 
 
-#### Product backlog
+#### Product Backlog
 ![Backlog_product](/SCRUM/CapturasSprint/backlogpractica1.png)
-#### Spring backlog
+#### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog1.png)
-#### Burndown chart
+#### Burndown Chart
 ![Burndown_chart](/SCRUM/CapturasSprint/burndownchart1.png)
 
-Observamos que la grafica no varia nada, ya que hemos considerado que estas tareas no tienen un valor potencial en el proyecto.
+Observamos que la gráfica no varia nada, ya que hemos considerado que estas tareas no tienen un valor potencial en el proyecto.
 
 ## Segunda Semana
 
@@ -35,10 +35,47 @@ Despues todo el equipo, realizara un análisis de la entrevista de forma individ
 
 Todo esto sera una primera toma con los posibles requisitos que puede aparecer a primera vista en el proyecto, en los proximos sprints nos encargaremos de refinar y validar estos requisitos.
 
-#### Product backlog
+#### Product Backlog
 ![Backlog_product](/SCRUM/CapturasSprint/backlogsprint2.png)
-#### Spring backlog
+#### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
-#### Burndown chart
+#### Burndown Chart
+![Burndown_chart]
+
+## Tercera Semana
+
+Ahora nos encargaremos de la definición y validación de los requisitos, esto lo haremos clasificando los requisitos que hemos obtenido de la entrevista y los que hemos obtenido mediante reuniones del equipo. Esta fase no hemos especificado tarea a nadie del equipo concreto ya que hemos considerado que el punto de vista de cualquier miembro del equipo podria aportar algo diferente y por tanto dar algún valor que no se haya podido identificar antes.
+
+Despues nos encargaremos del modelado. Este modelado lo vamos a realizar mediante el método UWE, entonces este modelado se hara mediante Casos de uso y sus respectivas actividades de cada. Hemos detectado como unos 23 casos de uso, de forma que nos hemos repartido las tareas de la forma más equitativa posible para que cada uno tenga un trabajo similar a sus compañeros.
+
+Para realizar todas estas tareas hemos realizado 3 sprints:
+
+### Sprint definición de requisitos.
+
+En este sprint nos encargaremos de transcribir los requisitos en lenguaje natural, clasificar los requisitos capturados y hacer un glosario de las palabras que puedan dar a confusión para el resto de integrantes del equipo o para el propio cliente.
+
+#### Spring Backlog
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+#### Burndown Chart
+![Burndown_chart]
+
+### Sprint Validación de requisitos.
+
+Hemos realizado varias reuniones de equipo y tambien nos hemos reunidos el cliente para verificar que hemos reunido todos los requisitos que nos han solicitado y si hemos añadido algunos, estos sigan la idea del proyecto inicial. Esta validación la hemos realizado mediante una auditoría
+
+#### Spring Backlog
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+#### Burndown Chart
+![Burndown_chart]
+
+### Sprint Modelado de requisitos.
+
+Como ya comenten en la introducción de esta semana, en el modelado seguimos el metodo UWE, por tanto realizaremos los casos de uso detectados y sus respectivas actividades.
+
+El desarrollo de cada uno de caso de uso y de actividad se ha repartido de forma equitativa al equipo de desarrollo.
+
+#### Spring Backlog
+![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
+#### Burndown Chart
 ![Burndown_chart]
 
