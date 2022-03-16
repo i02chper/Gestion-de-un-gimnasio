@@ -36,11 +36,11 @@ Despues todo el equipo, realizara un análisis de la entrevista de forma individ
 Todo esto sera una primera toma con los posibles requisitos que puede aparecer a primera vista en el proyecto, en los proximos sprints nos encargaremos de refinar y validar estos requisitos.
 
 #### Product Backlog
-![Backlog_product](/SCRUM/CapturasSprint/backlogsprint2.png)
+![Backlog_product](/SCRUM/CapturasSprint/backlogpractica2.png)
 #### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/sprintbacklog2.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchart3.png)
 
 ## Tercera Semana
 
