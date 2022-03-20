@@ -77,5 +77,5 @@ El desarrollo de cada uno de caso de uso y de actividad se ha repartido de forma
 #### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/sprintmodelado.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchartmodelado.png)
 
