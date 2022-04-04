@@ -79,3 +79,17 @@ El desarrollo de cada uno de caso de uso y de actividad se ha repartido de forma
 #### Burndown Chart
 ![Burndown_chart](/SCRUM/CapturasSprint/burndownchartmodelado.png)
 
+## Cuarta Semana
+
+Tras una exposición al cliente sobre los requisitos y el trabajo realizado y al haber obtenido su visto bueno procederemos a realizar los modelados de UWE, tal como se debe hacer al desarrollar esta aplicación siguiendo la metodología UWE.
+Para ello deberemos realizaremos los siguientes modelos: Modelo de Contenido, Modelo de Usuario, Modelo de proceso que se divide en dos que son la estructura del proceso y flujo del proceso, Modelo de navegación, Modelo de presentación.
+
+El reparto será simple, cada uno desarrollara un modelo, aunque obviamente al finalizar el desarrollo del modelado se hara una revisión en grupo para ver si es acorde a lo que se pide, aparte la mayoria de los modelados necesita del anterior para que este se pueda desarrollar apropiadamente.
+
+
+#### Product Backlog
+![Backlog_product]
+#### Spring Backlog
+![Sprint_Backlog]
+#### Burndown Chart
+![Burndown_chart]
