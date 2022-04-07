@@ -88,8 +88,8 @@ El reparto será simple, cada uno desarrollara un modelo, aunque obviamente al f
 
 
 #### Product Backlog
-![Backlog_product]
+![Backlog_product](/SCRUM/CapturasSprint/backlogDiagramasUWE.png)
 #### Spring Backlog
-![Sprint_Backlog]
+![Sprint_Backlog](/SCRUM/CapturasSprint/SprintBacklogDiagramasUWE.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/burndownchartDiagramasUWE.png)
