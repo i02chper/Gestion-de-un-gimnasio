@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Poppins';
+	src: url("../font/Poppins-Light.ttf") format("truetype");
+	font-weight: 50;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url("../font/Poppins-Regular.ttf") format("truetype");
+	font-weight: 100;
+	font-style: normal;
+}
