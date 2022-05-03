@@ -93,3 +93,20 @@ El reparto será simple, cada uno desarrollara un modelo, aunque obviamente al f
 ![Sprint_Backlog](/SCRUM/CapturasSprint/SprintBacklogDiagramasUWE.png)
 #### Burndown Chart
 ![Burndown_chart](/SCRUM/CapturasSprint/burndownchartDiagramasUWE.png)
+
+## Quinta semana
+
+Tras haber desarrollado todos los diagramas necesarios y el prototipo llega el momento de la implementación de la aplicación web, para ello debemos implementar 3 partes importantes que son:
+ 
+ * Frontend
+ * Backend
+ * Base de datos
+
+La implementación nos lo hemos repartido de forma equitativa para agilizar el proceso y poder tener la aplicación los antes posible, por lo menos una versión inicial totalmente funcional, para obtener las opiniones del cliente ante la posibilidad de error de implementación de algún requisito en concreto y también para detectar con tiempo algún tipo de anomalía presente en la aplicación que serán reparadas .
+
+#### Product Backlog
+![Backlog_product]
+#### Spring Backlog
+![Sprint_Backlog]
+#### Burndown Chart
+![Burndown_chart]
