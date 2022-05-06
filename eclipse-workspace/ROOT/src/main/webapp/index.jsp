@@ -6,9 +6,9 @@
   <head>
 	<meta charset="UTF-8">
 	<title>Always Gym</title>
-	<link rel="stylesheet" href="css/fuentes.css">
-	<link rel="stylesheet" href="css/general.css">
-	<script type="text/javascript" src="js/funciones.js"></script>
+	<link rel="stylesheet" href="/css/fuentes.css">
+	<link rel="stylesheet" href="/css/general.css">
+	<script type="text/javascript" src="/js/funciones.js"></script>
   </head>
   <body onload="set_size()">
     <%!String mensaje, tipo, hoy;
@@ -36,15 +36,17 @@
 	<%}
 	
 	//En caso contrario
-	else {%>
-		<h1>¡Bienvenido <jsp:getProperty name="user" property="nombre"/>!</h1>
-		
-	<%	//Distinguimos entre administrador y espectador
-		if((tipo = user.getTipo()).equals("administrador")){%>
-			<div class="header">
+	else {
+		//ADMINISTRADOR
+		%>	<div class="header">
 				<a href="/">
 					<div class="home"></div>
 				</a>
+				<a href="/perfil">
+					<div class="btn"><%=user.getNombre()%></div>
+				</a><%
+				
+		if((tipo = user.getTipo()).equals("admin")){%>
 				<a href="/getSesiones">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
@@ -60,11 +62,8 @@
 			</div>
 	  <%}
 		//INSTRUCTOR
-		else {%>
-			<div class="header">
-				<a href="/practica3">
-					<div class="home"></div>
-				</a>
+		else if((tipo = user.getTipo()).equals("instr")){%>
+		
 				<a href="/logout">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
@@ -79,6 +78,22 @@
 				</a>
 			</div><%
 		}
+		//SOCIO
+		else{%>
+				<a href="/logout">
+					<div class="btn">CERRAR SESI&Oacute;N</div>
+				</a>
+				<a href="/modificar">
+					<div class="btn">MODIFICAR PERFIL</div>
+				</a>
+				<a href="/logout">
+					<div class="btn">RESERVAS</div>
+				</a>
+				<a href="/modificar">
+					<div class="btn">RUTINAS</div>
+				</a>
+			</div><%
+	  	}
 	}%>
   </body>
 </html>

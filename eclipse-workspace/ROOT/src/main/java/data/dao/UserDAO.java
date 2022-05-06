@@ -96,10 +96,10 @@ public class UserDAO {
 		return user;
 	}
 	
-	/**
+	/** TODO: DEPRECATED
 	 * Método encargado de devolver todos los logs existente
 	 * @return Cadena con todos los logs
-	 */
+	 *
 	public String getLogs(){
 		String logs = "";
 		
@@ -121,7 +121,7 @@ public class UserDAO {
 		}
 		
 		return logs;
-	}
+	}*/
 	
 	/**
 	 * Método encargado de devolver el registro de un usuario
@@ -232,36 +232,36 @@ public class UserDAO {
 	 * @param tipo Tipo del usuario
 	 * @return Devuelve 0 si se ha añadido correctamente o un entero que representa el tipo de error ocurrido
 	 */
-	public Integer addUsuario(String usuario, String nombre, String apellidos, String correo, String pass, String tipo) {		
-		if(usuario.equals("") || nombre.equals("") || apellidos.equals("") || correo.equals("") || pass.equals("") || tipo.equals(""))
+	//addUsuario(correo, pass, nombre, apellidos, dni, telefono, tipo);
+	public Integer addUsuario(String correo, String pass, String nombre, String apellidos, String dni, String telefono, String tipo) {
+		// Comprobamos que el código introducido, de haber introducido alguno, es correcto
+		if(tipo.equals("error"))
 			return -1;
 		
 		try {
-			Statement get_usuarios = con.createStatement();
+			Statement get_correos_usuarios = con.createStatement();
 			
-			ResultSet usuarios = get_usuarios.executeQuery(this.statements.getProperty("get_usuarios"));
+			ResultSet correos = get_correos_usuarios.executeQuery(this.statements.getProperty("get_usuarios"));
 			
-			while(usuarios.next())
-				if(usuarios.getString(1).equals(usuario))
+			// Comprobamos que el correo introducido no se encuentra ya registrado
+			while(correos.next())
+				if(correos.getString(1).equals(correo))
 					return -2;
 			
 			PreparedStatement aniadir = con.prepareStatement(this.statements.getProperty("aniadir_usuario"));
 			
-			//nick, nombre, apellidos, correo, pass, tipo
-			aniadir.setString(1, usuario);
-			aniadir.setString(2, nombre);
-			aniadir.setString(3, apellidos);
-			aniadir.setString(4, correo);
-			aniadir.setString(5, pass);
-			
-			if(tipo.equals("admin"))
-				aniadir.setString(6, "administrador");
-			else
-				aniadir.setString(6, "espectador");
+			//correo, pass, nombre, apellidos, dni, telefono, tipo
+			aniadir.setString(1, correo);
+			aniadir.setString(2, pass);
+			aniadir.setString(3, nombre);
+			aniadir.setString(4, apellidos);
+			aniadir.setString(5, dni);
+			aniadir.setString(6, telefono);
+			aniadir.setString(7, tipo);
 			
 			aniadir.executeUpdate();
 			
-			get_usuarios.close();
+			get_correos_usuarios.close();
 			aniadir.close();
 		}
 		catch(SQLException e){
@@ -301,21 +301,50 @@ public class UserDAO {
 	 * @param nombre_usuario Nick del usuario
 	 * @return Devuelve true si se ha eliminado correctamente o false en caso contrario
 	 */
-	public Boolean eliminarUsuario(String nombre_usuario) {
+	public Boolean eliminarUsuario(String correo_usuario) {
 		
 		try {
-			PreparedStatement eliminar_criticas = con.prepareStatement(this.statements.getProperty("eliminar_criticas_usuario"));
-			eliminar_criticas.setString(1, nombre_usuario);
+			//Eliminamos todas las reservas de RESERVA_SLOT asociadas al usuario
+			PreparedStatement eliminar_reservas_slots = con.prepareStatement(this.statements.getProperty("eliminar_reservas_slots"));
+			eliminar_reservas_slots.setString(1, correo_usuario);
+			eliminar_reservas_slots.executeUpdate();
+			eliminar_reservas_slots.close();
 			
-			eliminar_criticas.executeUpdate();
+			//Eliminamos todas las reservas de RESERVA_CLASE asociadas al usuario
+			PreparedStatement eliminar_reservas_clases = con.prepareStatement(this.statements.getProperty("eliminar_reservas_clases"));
+			eliminar_reservas_clases.setString(1, correo_usuario);
+			eliminar_reservas_clases.executeUpdate();
+			eliminar_reservas_clases.close();
 			
-			PreparedStatement eliminar = con.prepareStatement(this.statements.getProperty("eliminar_usuario"));
-			eliminar.setString(1, nombre_usuario);
+			//Eliminamos todas las reservas de RESERVA asociadas al usuario
+			PreparedStatement eliminar_reservas = con.prepareStatement(this.statements.getProperty("eliminar_reservas"));
+			eliminar_reservas.setString(1, correo_usuario);
+			eliminar_reservas.executeUpdate();
+			eliminar_reservas.close();
 			
-			eliminar.executeUpdate();
+			//Eliminamos todas las rutinas de AUTORIA asociadas al usuario
+			PreparedStatement eliminar_rutinas_autor = con.prepareStatement(this.statements.getProperty("eliminar_rutinas_autor"));
+			eliminar_rutinas_autor.setString(1, correo_usuario);
+			eliminar_rutinas_autor.executeUpdate();
+			eliminar_rutinas_autor.close();
 			
-			eliminar_criticas.close();
-			eliminar.close();
+			//Eliminamos todas las rutinas de RUTINA asociadas al usuario
+			PreparedStatement eliminar_rutinas = con.prepareStatement(this.statements.getProperty("eliminar_rutinas"));
+			eliminar_rutinas.setString(1, correo_usuario);
+			eliminar_rutinas.executeUpdate();
+			eliminar_rutinas.close();
+			
+			//Eliminamos todos los pagos de PAGO asociados al usuario
+			PreparedStatement eliminar_pagos = con.prepareStatement(this.statements.getProperty("eliminar_pagos"));
+			eliminar_pagos.setString(1, correo_usuario);
+			eliminar_pagos.executeUpdate();
+			eliminar_pagos.close();
+			
+			//Eliminamos al usuario de USUARIO
+			PreparedStatement eliminar_usuario = con.prepareStatement(this.statements.getProperty("eliminar_usuario"));
+			eliminar_usuario.setString(1, correo_usuario);
+			eliminar_usuario.executeUpdate();
+			eliminar_usuario.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

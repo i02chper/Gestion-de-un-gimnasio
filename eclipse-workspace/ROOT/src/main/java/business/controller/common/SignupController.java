@@ -28,10 +28,10 @@ public class SignupController extends HttpServlet {
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
 		String redireccionar;
 		
-		if(usuario != null && usuario.getNombre().equals(""))
-			redireccionar = "/practica3/signup";
+		if(usuario == null || usuario.getNombre().equals(""))
+			redireccionar = "/signup";
 		else
-			redireccionar = "/practica3";
+			redireccionar = "/";
 		
 		response.sendRedirect(redireccionar);
 	}
@@ -44,52 +44,67 @@ public class SignupController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		UserDAO dao = new UserDAO(getServletContext());
+		request.setCharacterEncoding("UTF-8");
 		HttpSession sesion = request.getSession();
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
+		String redireccionar = "/";
 		
-		String nombre_usuario = request.getParameter("usuario"),
-			   tipo = request.getParameter("tipo"),
-			   correo = request.getParameter("correo"),
-			   pass = request.getParameter("pass"),
-			   nombre = request.getParameter("nombre"),
-			   apellidos = request.getParameter("apellidos"),
-			   redireccionar = "/practica3";
-		
-		Integer error = dao.addUsuario(nombre_usuario, nombre, apellidos, correo, pass, tipo);
-		
-		switch(error) {
-			//CORRECTO
-			case 0:
-				if(tipo.equals("admin"))
-					tipo = "administrador";
-				else
-					tipo = "espectador";
-				
-				usuario.setNombre(nombre);
-				usuario.setTipo(tipo);
-				usuario.setCorreo(nombre_usuario);
-				break;
-			
-			//ALGÚN CAMPO VACÍO
-			case -1:
-				redireccionar = "/practica3/error";
-				sesion.setAttribute("error", "DEBE RELLENAR TODOS LOS CAMPOS DEL REGISTRO");
-				break;
-				
-			//USUARIO YA RESGISTRADO
-			case -2:
-				redireccionar = "/practica3/error";
-				sesion.setAttribute("error", "EL USUARIO INTRODUCIDO YA SE ENCUENTRA REGISTRADO");
-				break;
-			
-			//CUALQUIER OTRO ERROR
-			default:
-				redireccionar = "/practica3/error";
-				sesion.setAttribute("error", "ERROR: EL REGISTRO NO SE HA PODIDO LLEVAR A CABO");
-				break;
+		// Si el usuario se encuentra logueado
+		if(usuario != null && !usuario.getNombre().equals("")) {
+			redireccionar = "/error";
+			sesion.setAttribute("error", "NO PUEDE REGISTRARSE ESTANDO LOGUEADO");
 		}
-  		
+		
+		// En caso contrario
+		else {
+			UserDAO dao = new UserDAO(getServletContext());
+			Integer error;
+			String correo = request.getParameter("correo"),
+				   pass = request.getParameter("pass"),
+				   nombre = request.getParameter("nombre"),
+				   apellidos = request.getParameter("apellidos"),
+				   dni = request.getParameter("dni"),
+				   telefono = request.getParameter("telefono"),
+				   tipo = request.getParameter("tipo");
+			
+			if(tipo.isEmpty())
+				tipo = "socio";
+			else if(tipo.equals("123456")) // Código de prueba para un administrador
+				tipo = "admin";
+			else if(tipo.equals("654321")) // Código de prueba para un instructor
+				tipo = "instr";
+			else
+				tipo = "error";
+			
+			error = dao.addUsuario(correo, pass, nombre, apellidos, dni, telefono, tipo);
+			
+			switch(error) {
+				//CORRECTO
+				case 0:
+					usuario.setNombre(nombre);
+					usuario.setTipo(tipo);
+					usuario.setCorreo(correo);
+					break;
+				
+				//ALGÚN CAMPO OBLIGATORIO VACÍO
+				case -1:
+					redireccionar = "/error";
+					sesion.setAttribute("error", "EL CÓDIGO INTRODUCIDO NO SE ENCUENTRA REGISTRADO");
+					break;
+					
+				//USUARIO YA RESGISTRADO
+				case -2:
+					redireccionar = "/error";
+					sesion.setAttribute("error", "EL USUARIO INTRODUCIDO YA SE ENCUENTRA REGISTRADO");
+					break;				
+					
+				//CUALQUIER OTRO ERROR
+				default:
+					redireccionar = "/error";
+					sesion.setAttribute("error", "ERROR: EL REGISTRO NO SE HA PODIDO LLEVAR A CABO");
+					break;
+			}
+		}
   		response.sendRedirect(redireccionar);
 	}
 }

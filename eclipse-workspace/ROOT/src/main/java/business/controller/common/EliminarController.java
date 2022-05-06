@@ -31,21 +31,21 @@ public class EliminarController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesion = request.getSession();
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
-		String redireccionar = "/practica3";
+		String redireccionar = "/";
 		
 		if(usuario != null && !usuario.getNombre().equals("")) {
 			UserDAO dao = new UserDAO(getServletContext());
 			
 			if(dao.eliminarUsuario(usuario.getCorreo())) {
-				sesion.setAttribute("customerBean", null);
+				sesion.setAttribute("user", null);
 			}
 			else {
-				redireccionar = "/practica3/error";
+				redireccionar = "/error";
 				sesion.setAttribute("error", "NO SE HA PODIDO ELIMINAR LA INFORMACI&Oacute;N DE TU CUENTA DEL SISTEMA");
 			}
 		}
 		else
-			redireccionar = "/practica3/login";
+			redireccionar = "/login";
 		
 		response.sendRedirect(redireccionar);
 	}

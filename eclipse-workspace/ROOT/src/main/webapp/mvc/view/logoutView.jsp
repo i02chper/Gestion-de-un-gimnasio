@@ -14,32 +14,31 @@
 		//Comprobamos que estamos logueados, en caso contrario redirigiremos al login
 		if(user != null && !user.getNombre().equals("")){
 			
-			//Distinguimos entre usuario administrador y espectador para el header
-			if(user.getTipo().equals("admin")){%>
-				<div class="header">
-				<a href="/">
-					<div class="home"></div>
-				</a>
-				<a href="/getSesiones">
-					<div class="btn">GESTIONAR CLASES</div>
-				</a>
-				<a href="/nuevoEspectaculo">
-					<div class="btn">GESTIONAR NOVEDADES</div>
-				</a>
-				<a href="/logout">
-					<div class="btn">CERRAR SESI&Oacute;N</div>
-				</a>
-				<a href="/modificar">
-					<div class="btn">MODIFICAR PERFIL</div>
-				</a>
-			</div><%
-			}
-			//INSTRUCTOR
-			else if(user.getTipo().equals("instr")){%>
-				<div class="header">
-					<a href="">
+			%>	<div class="header">
+					<a href="/">
 						<div class="home"></div>
 					</a>
+					<a href="/perfil">
+						<div class="btn"><%=user.getNombre()%></div>
+					</a><%
+					
+			//ADMINISTRADOR
+			if(user.getTipo().equals("admin")){%>
+			
+					<a href="/getSesiones">
+						<div class="btn">GESTIONAR CLASES</div>
+					</a>
+					<a href="/nuevoEspectaculo">
+						<div class="btn">GESTIONAR NOVEDADES</div>
+					</a>
+					<a href="/modificar">
+						<div class="btn">MODIFICAR PERFIL</div>
+					</a>
+				</div>
+		  <%}
+			//INSTRUCTOR
+			else if(user.getTipo().equals("instr")){%>
+
 					<a href="/logout">
 						<div class="btn">GESTIONAR CLASES</div>
 					</a>
@@ -51,17 +50,19 @@
 					</a>
 				</div><%
 			}
-			// SOCIO
-			else {%>
-				<div class="header">
-					<a href="/">
-						<div class="home"></div>
+			//SOCIO
+			else{%>
+					<a href="/logout">
+						<div class="btn">RESERVAS</div>
+					</a>
+					<a href="/modificar">
+						<div class="btn">RUTINAS</div>
 					</a>
 					<a href="/modificar">
 						<div class="btn">MODIFICAR PERFIL</div>
 					</a>
 				</div><%
-			}%>
+		  	}%>
 			
 			<div class="opciones">
 			
@@ -78,7 +79,7 @@
 					<p>Pulsa aqu&iacute; para eliminar tu cuenta de forma permanente.</p>
 					<div class="advertencia">
 						<p>¡ADVERTENCIA!</p>
-						<p>TODAS TUS CR&Iacute;TICAS SER&Aacute;N ELIMINADAS</p>
+						<p>TODAS TUS RESERVAS, RUTINAS Y PAGOS SER&Aacute;N ELIMINADOS PARA SIEMPRE</p>
 					</div>
 				</div>
 			</div><%
