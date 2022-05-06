@@ -153,7 +153,8 @@ public class UserDAO {
 	 * Método encargado de actualizar el log de un usuario
 	 * @param usuario Nick del usuario
 	 * @return Devuelve true si se ha actualizado con éxito o false en caso contrario
-	 */
+	 *
+	 * TODO: DEPRECATED
 	public boolean actualizarLog(String usuario) {
 		
 		PreparedStatement actualizar;
@@ -167,7 +168,7 @@ public class UserDAO {
 		}
 		
 		return true;
-	}
+	}*/
 	
 	/**
 	 * Método encargado de modificar los datos de un usuario
@@ -177,45 +178,50 @@ public class UserDAO {
 	 * @param pass Contraseña del usuario
 	 * @param usuario Nick del usuario
 	 */
-	public boolean modificarDatos(String nombre, String apellidos, String correo, String pass, String usuario) {
-		
+	public boolean modificarDatos(String pass, String nombre, String apellidos, String telefono, String lesion, String correo) {
+		// pass, nombre, apellidos, telefono, lesion
 		try {
 			PreparedStatement get_datos = con.prepareStatement(this.statements.getProperty("get_datos"));
-			get_datos.setString(1, usuario);
+			get_datos.setString(1, correo);
 			
 			ResultSet datos = get_datos.executeQuery();
 			datos.next();
 			
 			PreparedStatement modificar = con.prepareStatement(this.statements.getProperty("modificar"));
 			
-			if(!nombre.equals(""))
-				modificar.setString(1, nombre);
+			if(!pass.equals(""))
+				modificar.setString(1, pass);
 			else
 				modificar.setString(1, datos.getString(1));
 			
-			if(!apellidos.equals(""))
-				modificar.setString(2, apellidos);
+			if(!nombre.equals(""))
+				modificar.setString(2, nombre);
 			else
 				modificar.setString(2, datos.getString(2));
 			
-			if(!pass.equals(""))
-				modificar.setString(3, pass);
+			if(!apellidos.equals(""))
+				modificar.setString(3, apellidos);
 			else
 				modificar.setString(3, datos.getString(3));
 			
-			if(!correo.equals(""))
-				modificar.setString(4, correo);
+			if(!telefono.equals(""))
+				modificar.setString(4, telefono);
 			else
 				modificar.setString(4, datos.getString(4));
 			
-			modificar.setString(5, usuario);
+			if(!lesion.equals(""))
+				modificar.setString(5, lesion);
+			else
+				modificar.setString(5, datos.getString(5));
 			
+			modificar.setString(6, correo);
 			modificar.executeUpdate();
 			
 			get_datos.close();
 			modificar.close();
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		

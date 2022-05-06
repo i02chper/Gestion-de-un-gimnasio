@@ -1,4 +1,4 @@
-package business.controller.admin;
+package business.controller.common;
 
 import display.javabean.*;
 import java.io.IOException;
@@ -28,10 +28,10 @@ public class ModificarController extends HttpServlet {
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
 		String redireccionar;
 		
-		if(usuario != null && usuario.getNombre().equals(""))
-			redireccionar = "/practica3/login";
+		if(usuario == null || usuario.getNombre().equals(""))
+			redireccionar = "/login";
 		else
-			redireccionar = "/practica3/modificar";
+			redireccionar = "/modificar";
 		
 		response.sendRedirect(redireccionar);
 	}
@@ -44,25 +44,28 @@ public class ModificarController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		UserDAO dao = new UserDAO(getServletContext());
 		HttpSession sesion = request.getSession();
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
 		
-		String correo = request.getParameter("correo"),
-			   pass = request.getParameter("pass"),
+		String pass = request.getParameter("pass"),
 			   nombre = request.getParameter("nombre"),
 			   apellidos = request.getParameter("apellidos"),
-			   redireccionar = "/practica3";
+			   telefono = request.getParameter("telefono"),
+			   lesion = request.getParameter("lesion"),
+			   redireccionar = "/";
   		
 		//SI EL USUARIO NO HA MODIFICADO NADA
-		if(nombre.equals("") && apellidos.equals("") && correo.equals("") && pass.equals("")){
-			redireccionar = "/practica3/error";
+		if(nombre.equals("") && apellidos.equals("") && pass.equals("") && telefono.equals("") && lesion.equals("")){
+			redireccionar = "/error";
   			sesion.setAttribute("error", "DEBE RELLENAR AL MENOS UN CAMPO");
 		}
 		
   		//ERROR AL MODIFICAR
-  		if(!dao.modificarDatos(nombre, apellidos, correo, pass, usuario.getCorreo())){
-  			redireccionar = "/practica3/error";
+		// pass, nombre, apellidos, telefono, lesion
+  		if(!dao.modificarDatos(pass, nombre, apellidos, telefono, lesion, usuario.getCorreo())){
+  			redireccionar = "/error";
   			sesion.setAttribute("error", "EL USUARIO INTRODUCIDO NO SE ENCUENTRA REGISTRADO");
   		}
   		

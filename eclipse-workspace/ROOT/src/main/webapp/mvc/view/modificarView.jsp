@@ -81,7 +81,7 @@
 					<input name="apellidos" type="text"></input>
 					<input name="pass" type="text"></input>
 					<input name="telefono" type="text"></input>
-					<textarea></textarea>
+					<textarea name="lesion"></textarea>
 					<%//TODO%>
 				</div>
 			</form>
