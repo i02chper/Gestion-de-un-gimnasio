@@ -37,7 +37,7 @@ public class UserDAO {
 		
 		try {
 			statements = new Properties();
-			statements.load(aplicacion.getResourceAsStream(aplicacion.getInitParameter("RutaConsultas")));
+			statements.load(aplicacion.getResourceAsStream(aplicacion.getInitParameter("SQL_statements")));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

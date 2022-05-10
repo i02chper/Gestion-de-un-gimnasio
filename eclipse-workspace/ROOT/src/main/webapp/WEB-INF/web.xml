@@ -27,7 +27,7 @@
 </env-entry>
 
 <context-param>
-	<param-name>RutaConsultas</param-name>
+	<param-name>SQL_statements</param-name>
 	<param-value>/WEB-INF/sql.properties</param-value>
 </context-param>
 
@@ -72,13 +72,13 @@
 </servlet-mapping>
 
 <servlet>
-  	<servlet-name>nuevoEspectaculo</servlet-name>
-  	<jsp-file>/mvc/view/admin/altaEspectaculoView.jsp</jsp-file>
+  	<servlet-name>nuevaClase</servlet-name>
+  	<jsp-file>/mvc/view/instr/crearClaseView.jsp</jsp-file>
 </servlet>
 
 <servlet-mapping>
-  	<servlet-name>nuevoEspectaculo</servlet-name>
-  	<url-pattern>/nuevoEspectaculo</url-pattern>
+  	<servlet-name>nuevaClase</servlet-name>
+  	<url-pattern>/nuevaClase</url-pattern>
 </servlet-mapping>
 
 <servlet>

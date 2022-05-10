@@ -59,7 +59,7 @@
 				<a href="/modificar">
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
-			</div>
+			</div> 
 	  <%}
 		//INSTRUCTOR
 		else if((tipo = user.getTipo()).equals("instr")){%>
