@@ -21,9 +21,6 @@ import business.clase.ClaseDTO;
 @WebServlet("/addClase")
 public class AddClaseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private static final int ANIADIR = 1;
-	private static final int MODIFICAR = 2;
  
 	/**
 	 * Método encargado de controlar la petición GET del servlet
@@ -32,7 +29,17 @@ public class AddClaseController extends HttpServlet {
 	 * @throws IOException Si se produce un error en la entrada/salida
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/nuevoEspectaculo");
+		HttpSession sesion = request.getSession();
+		UserBean usuario = (UserBean) sesion.getAttribute("user");
+		String redireccionar = "/";
+		
+		if(usuario != null && !usuario.getNombre().equals(""))
+			redireccionar = "/nuevaClase";
+		
+		else
+			redireccionar = "/login";
+		
+		response.sendRedirect(redireccionar);
 	}
 
 	/**
@@ -42,6 +49,7 @@ public class AddClaseController extends HttpServlet {
 	 * @throws IOException Si se produce un error en la entrada/salida
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		ClaseDAO dao = new ClaseDAO(getServletContext());
 		HttpSession sesion = request.getSession();
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
@@ -87,5 +95,4 @@ public class AddClaseController extends HttpServlet {
 		
 		response.sendRedirect(redireccionar);
 	}
-
 }

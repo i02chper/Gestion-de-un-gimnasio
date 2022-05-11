@@ -130,4 +130,14 @@
   	<servlet-name>logout</servlet-name>
   	<url-pattern>/logout</url-pattern>
 </servlet-mapping>
+
+<servlet>
+  	<servlet-name>clases</servlet-name>
+  	<jsp-file>/mvc/view/clasesView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>clases</servlet-name>
+  	<url-pattern>/clases</url-pattern>
+</servlet-mapping>
 </web-app>

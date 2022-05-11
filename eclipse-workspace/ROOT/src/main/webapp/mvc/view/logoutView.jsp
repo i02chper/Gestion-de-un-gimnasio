@@ -31,9 +31,6 @@
 					<a href="/nuevoEspectaculo">
 						<div class="btn">GESTIONAR NOVEDADES</div>
 					</a>
-					<a href="/modificar">
-						<div class="btn">MODIFICAR PERFIL</div>
-					</a>
 				</div>
 		  <%}
 			//INSTRUCTOR
@@ -45,9 +42,6 @@
 					<a href="/modificar">
 						<div class="btn">GESTIONAR RUTINAS</div>
 					</a>
-					<a href="/modificar">
-						<div class="btn">MODIFICAR PERFIL</div>
-					</a>
 				</div><%
 			}
 			//SOCIO
@@ -58,8 +52,8 @@
 					<a href="/modificar">
 						<div class="btn">RUTINAS</div>
 					</a>
-					<a href="/modificar">
-						<div class="btn">MODIFICAR PERFIL</div>
+					<a href="/getClases">
+						<div class="btn">CLASES DISPONIBLES</div>
 					</a>
 				</div><%
 		  	}%>

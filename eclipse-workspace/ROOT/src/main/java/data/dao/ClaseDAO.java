@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
@@ -89,6 +90,73 @@ public class ClaseDAO {
 		}
 		
 		return 0;
+	}
+	
+	public ArrayList<ClaseDTO> getClases(String usuario){
+		ArrayList<ClaseDTO> clases = new ArrayList<ClaseDTO>();
+		
+		try {
+			PreparedStatement get_clases;
+			SimpleDateFormat formato_bd = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+			
+			if(usuario.equals("todos"))
+				get_clases = con.prepareStatement(this._statements.getProperty("get_clases_todas"));
+			else {
+				get_clases = con.prepareStatement(this._statements.getProperty("get_clases_user"));
+				get_clases.setString(1, usuario);
+			}
+			
+			ResultSet clases_rs = get_clases.executeQuery();
+			
+			// Obtenemos las horas
+			PreparedStatement get_horas = con.prepareStatement(this._statements.getProperty("get_horas"));
+			ResultSet horas_rs = get_horas.executeQuery();
+			
+			//c.id, c.descripcion, c.ubicacion, c.titulo, c.categoria, c.duracion, c.capacidad
+			while(clases_rs.next()) {
+				ClaseDTO clase = new ClaseDTO();
+				String dia = "";
+				ArrayList<String> horas = new ArrayList<String>();
+				
+				clase.set_id(clases_rs.getInt(1));
+				clase.set_descripcion(clases_rs.getString(2));
+				clase.set_ubicacion(clases_rs.getString(3));
+				clase.set_titulo(clases_rs.getString(4));
+				clase.set_categoria(clases_rs.getString(5));
+				clase.set_duracion(clases_rs.getInt(6));
+				clase.set_capacidad(clases_rs.getInt(7));
+				clase.set_instructor(clases_rs.getString(8));
+				
+				horas_rs.beforeFirst();
+				while(horas_rs.next()) {
+					
+					if(horas_rs.getInt(3) == clase.get_id()) {
+						Date fecha = formato_bd.parse(horas_rs.getString(2));
+						
+						if(!dia.equals(horas_rs.getString(1))) {
+							dia = horas_rs.getString(1);
+							clase.addDia(dia);
+						}
+						
+						if(!horas.contains(horas_rs.getString(2))) {
+							horas.add(horas_rs.getString(2));
+							clase.addHora(clase.get_format().format(fecha));
+						}
+					}
+				}
+				
+				clases.add(clase);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return clases;
 	}
 	
 }

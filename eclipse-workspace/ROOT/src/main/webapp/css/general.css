@@ -386,8 +386,41 @@ form div {
 	width:20px;
 }
 
+.horario {
+	display: flex;
+	left: 10px;
+}
 
+.horario .dia {
+	height: fit-content;
+	width: 30%;
+	padding: 0 20px 0px 20px;
+}
 
+.dia p {
+	margin: 0;
+}
 
+.aniadir_clase {
+	position: absolute;
+	top: 120px;
+	display: block;
+	float: right;
+	line-height: 100px;
+	width: fit-content;
+	background-color: #353535;
+	font-family: 'Poppins';
+	font-size: 30px;
+	font-weight: 50;
+	text-align:center;
+	transition: 0.2s;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.aniadir_clase:hover{
+	background-color: #dc4141;
+	transition: 0.2s;
+}
 
 

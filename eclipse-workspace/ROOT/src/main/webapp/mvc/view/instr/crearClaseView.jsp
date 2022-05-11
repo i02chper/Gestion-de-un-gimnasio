@@ -22,7 +22,7 @@
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
 			
-		//Comprobamos que el usuario es ADMINISTRADOR
+		//Comprobamos que el usuario es ADMINISTRADOR o INSTRUCTOR
 		if(!user.getTipo().equals("socio")){%>
 				<a href="/getSesiones">
 					<div class="btn">GESTIONAR CLASES</div>
@@ -32,9 +32,6 @@
 				</a>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
-				</a>
-				<a href="/modificar">
-					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
 			</div>
 				

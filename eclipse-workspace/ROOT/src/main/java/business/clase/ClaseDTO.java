@@ -1,11 +1,13 @@
 package business.clase;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ClaseDTO {
 	
+	private int _id;
 	private String _titulo;
 	private String _descripcion;
 	private String _categoria;
@@ -18,13 +20,14 @@ public class ClaseDTO {
 	private String _ubicacion;
 	
 	public ClaseDTO(){
+		this._id = -1;
 		this._titulo = "";
 		this._descripcion = "";
 		this._categoria = "";
 		this._capacidad = -1;
 		this._duracion = -1;
-		this._dias = null;
-		this._horas = null;
+		this._dias = new ArrayList<String>();;
+		this._horas = new ArrayList<Date>();;
 		this._ubicacion = "";
 		this._instructor = "";
 	}
@@ -43,6 +46,14 @@ public class ClaseDTO {
 		this._instructor = instructor;
 	}
 
+	public int get_id() {
+		return this._id;
+	}
+
+	public void set_id(int id) {
+		this._id = id;
+	}
+	
 	public String get_titulo() {
 		return this._titulo;
 	}
@@ -83,6 +94,10 @@ public class ClaseDTO {
 		this._duracion = duracion;
 	}
 
+	public SimpleDateFormat get_format() {
+		return this.formato_horas;
+	}
+	
 	public ArrayList<String> get_dias() {
 		return this._dias;
 	}
@@ -122,5 +137,17 @@ public class ClaseDTO {
 
 	public void set_ubicacion(String ubicacion) {
 		this._ubicacion = ubicacion;
+	}
+	
+	public void addDia(String dia) {
+		this._dias.add(dia);
+	}
+	
+	public void addHora(String hora) {
+		try {
+			this._horas.add(this.formato_horas.parse(hora));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 }

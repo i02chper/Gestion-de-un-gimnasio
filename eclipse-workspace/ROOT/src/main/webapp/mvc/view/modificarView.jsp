@@ -65,6 +65,9 @@
 				<a href="/modificar">
 					<div class="btn">RUTINAS</div>
 				</a>
+				<a href="/getClases">
+					<div class="btn">CLASES DISPONIBLES</div>
+				</a>
 			</div><%
 	  	}%>
 		<div class="modificar_perfil">
