@@ -24,7 +24,7 @@
 			
 		//Comprobamos que el usuario es ADMINISTRADOR o INSTRUCTOR
 		if(!user.getTipo().equals("socio")){%>
-				<a href="/getSesiones">
+				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
 				<a href="/nuevoEspectaculo">
@@ -35,7 +35,7 @@
 				</a>
 			</div>
 				
-			<div class="nueva_clase">
+			<div class="clase">
 			  <form method="post" action="addClase" id="clase">
 			  	<div style="display:block">
 			  	

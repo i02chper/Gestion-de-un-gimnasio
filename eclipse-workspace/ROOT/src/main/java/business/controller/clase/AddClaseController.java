@@ -1,4 +1,4 @@
-package business.controller.instr;
+package business.controller.clase;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

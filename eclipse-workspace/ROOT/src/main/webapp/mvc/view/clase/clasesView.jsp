@@ -15,7 +15,7 @@
     <%!String redireccionar;
        ArrayList<ClaseDTO> clases;
        UserDAO dao;
-       int duracion;
+       int duracion, cont = 1;
     %><%
 	clases =  (ArrayList<ClaseDTO>) session.getAttribute("clases");%>
 	
@@ -78,6 +78,9 @@
 			
 			for(ClaseDTO clase: clases) {%>
 				<div class="resultado">
+					<form method="post" id="clase<%=cont%>" action="/getClase">
+						<input type="hidden" name="id_clase" value="<%=clase.get_id()%>"></input>
+					</form>
 					<h3 class="titulo"><%=clase.get_titulo().toUpperCase()%></h3>
 					<p><%=clase.get_descripcion()%></p>
 					<label><strong>Instructor: </strong></label><%=clase.get_instructor() %><br>
@@ -112,8 +115,14 @@
 								</p>
 							</div><%
 						}%>
-					</div>
+					</div><%
+					if(user != null && (user.getTipo().equals("instr") || user.getTipo().equals("admin"))) {%>
+					<span class="control">
+						<button type="submit" form="clase<%=cont%>">Modificar clase</button>
+					</span><%
+					}%>
 				</div><%
+				cont++;
 			}
 		}%>
 		</div>

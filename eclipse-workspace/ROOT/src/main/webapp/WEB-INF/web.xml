@@ -72,16 +72,6 @@
 </servlet-mapping>
 
 <servlet>
-  	<servlet-name>nuevaClase</servlet-name>
-  	<jsp-file>/mvc/view/instr/crearClaseView.jsp</jsp-file>
-</servlet>
-
-<servlet-mapping>
-  	<servlet-name>nuevaClase</servlet-name>
-  	<url-pattern>/nuevaClase</url-pattern>
-</servlet-mapping>
-
-<servlet>
   	<servlet-name>sesiones</servlet-name>
   	<jsp-file>/mvc/view/admin/modificarSesionesView.jsp</jsp-file>
 </servlet>
@@ -132,12 +122,32 @@
 </servlet-mapping>
 
 <servlet>
+  	<servlet-name>nuevaClase</servlet-name>
+  	<jsp-file>/mvc/view/clase/crearClaseView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>nuevaClase</servlet-name>
+  	<url-pattern>/nuevaClase</url-pattern>
+</servlet-mapping>
+
+<servlet>
   	<servlet-name>clases</servlet-name>
-  	<jsp-file>/mvc/view/clasesView.jsp</jsp-file>
+  	<jsp-file>/mvc/view/clase/clasesView.jsp</jsp-file>
 </servlet>
 
 <servlet-mapping>
   	<servlet-name>clases</servlet-name>
   	<url-pattern>/clases</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<servlet-name>modificarClase</servlet-name>
+  	<jsp-file>/mvc/view/clase/modificarClaseView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>modificarClase</servlet-name>
+  	<url-pattern>/modificarClase</url-pattern>
 </servlet-mapping>
 </web-app>

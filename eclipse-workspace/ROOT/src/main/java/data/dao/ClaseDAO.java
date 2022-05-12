@@ -159,4 +159,67 @@ public class ClaseDAO {
 		return clases;
 	}
 	
+	public ClaseDTO getClase(int id_clase) {
+		ClaseDTO clase = new ClaseDTO();
+		SimpleDateFormat formato_bd = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		
+		try {
+			
+			PreparedStatement get_clase = con.prepareStatement(this._statements.getProperty("get_clase"));
+			PreparedStatement get_horas = con.prepareStatement(this._statements.getProperty("get_horas_clase"));
+			
+			get_clase.setInt(1, id_clase);
+			get_horas.setInt(1, id_clase);
+			
+			ResultSet clase_rs = get_clase.executeQuery();
+			ResultSet horas = get_horas.executeQuery();
+			
+			clase_rs.next();
+			
+			clase.set_id(clase_rs.getInt(1));
+			clase.set_descripcion(clase_rs.getString(2));
+			clase.set_ubicacion(clase_rs.getString(3));
+			clase.set_titulo(clase_rs.getString(4));
+			clase.set_categoria(clase_rs.getString(5));
+			clase.set_duracion(clase_rs.getInt(6));
+			clase.set_capacidad(clase_rs.getInt(7));
+			clase.set_instructor(clase_rs.getString(8));
+			
+			String dia = "";
+			ArrayList<String> horas_list = new ArrayList<String>();
+			
+			while(horas.next()) {
+				
+				Date fecha = formato_bd.parse(horas.getString(2));
+				
+				if(!dia.equals(horas.getString(1))) {
+					dia = horas.getString(1);
+					clase.addDia(dia);
+				}
+				
+				if(!horas_list.contains(horas.getString(2))) {
+					horas_list.add(horas.getString(2));
+					clase.addHora(clase.get_format().format(fecha));
+				}
+			}
+			
+			/*System.out.println("TITULO: " + clase.get_titulo() + "\nDESCRIPCION: " + clase.get_descripcion() + "\nINSTRUCTOR: " + clase.get_instructor());
+			System.out.print("DIAS: ");
+			for(String day: clase.get_dias())
+				System.out.print(day + ",");
+			System.out.print("\nHORAS: ");
+			for(Date hour: clase.get_horas())
+				System.out.print(clase.get_format().format(hour) + ",");*/
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return clase;
+	}
+	
 }

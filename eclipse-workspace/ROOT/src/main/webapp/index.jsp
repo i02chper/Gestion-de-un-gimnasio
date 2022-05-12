@@ -41,16 +41,15 @@
 	<%}
 	
 	//En caso contrario
-	else {
-		//ADMINISTRADOR
-		%>	<div class="header">
+	else {%>
+			<div class="header">
 				<a href="/">
 					<div class="home"></div>
 				</a>
 				<a href="/perfil">
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
-				
+		//ADMINISTRADOR
 		if((tipo = user.getTipo()).equals("admin")){%>
 				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
