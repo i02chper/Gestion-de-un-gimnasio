@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList,java.util.Date,business.clase.ClaseDTO,business.user.UserInfo,data.dao.UserDAO" %>
+<%@ page import="java.util.ArrayList,java.text.SimpleDateFormat,java.util.Date,business.clase.ClaseDTO,business.user.UserInfo,data.dao.UserDAO" %>
 <jsp:useBean id="user" class="display.javabean.UserBean" scope="session"/>
 <!DOCTYPE html>
 <html>
@@ -14,8 +14,29 @@
   	<%!
   	String redireccionar;
   	ClaseDTO clase;
+  	Boolean lunes = false, martes = false, miercoles = false, jueves = false, viernes = false, sabado = false;
+  	ArrayList<Date> horas;
+  	SimpleDateFormat formato;
+  	int cont;
   	%><%
   	clase = (ClaseDTO) session.getAttribute("clase");
+  	horas = clase.get_horas();
+  	formato = clase.get_format();
+  	
+  	for(String dia: clase.get_dias()){
+  		if(dia.equals("lunes"))
+  			lunes = true;
+  		else if(dia.equals("martes"))
+  			martes = true;
+  		else if(dia.equals("miercoles"))
+  			miercoles = true;
+  		else if(dia.equals("jueves"))
+  			jueves = true;
+  		else if(dia.equals("viernes"))
+  			viernes = true;
+  		else
+  			sabado = true;
+  	}
   	
  	// Comprobamos que estamos logueados
 	if(user != null && !user.getNombre().equals("")) {
@@ -63,7 +84,8 @@
 			  <form method="post" action="/eliminarClase" id="eliminar">
 			  	<input type="hidden" name="id_clase" value="<%=clase.get_id()%>">
 			  </form>
-			  <form method="post" action="modClase" id="clase">
+			  <form method="post" action="/modClase" id="clase">
+			  	<input type="hidden" name="id_clase" value="<%=clase.get_id()%>">
 			  	<div style="display:block">
 			  	
 			  		<%// Elementos comunes a todos los espectáculos%>
@@ -102,8 +124,8 @@
 							
 							<%
 					  		if(!user.getTipo().equals("instr")){%>
-					  			<input name="instructor" type="text" required oninvalid="this.setCustomValidity('Introduce al instructor de la clase')" 
-								oninput="this.setCustomValidity('')" value="<%=clase.get_instructor()%>"></input><%
+					  			<label><input name="instructor" type="text" required oninvalid="this.setCustomValidity('Introduce al instructor de la clase')" 
+								oninput="this.setCustomValidity('')" style="width: 300px" value="<%=clase.get_instructor()%>"> (CORREO)</label></input><%
 					  		}
 					  		else {%>
 					  			<input type="hidden" name="instructor" value="<%=user.getCorreo()%>"><%
@@ -117,25 +139,42 @@
 						<label for="dia_t">D&Iacute;A(S) DE LA SEMANA</label>
 						<div class="dias">
 							<div>
-								<label><input type="checkbox" name ="dia" value="lunes">Lunes</label>
-								<label><input type="checkbox" name ="dia" value="martes">Martes</label>
+								<label><input type="checkbox" name ="dia" value="lunes" <%if(lunes == true) {%>checked<%}%>>Lunes</label>
+								<label><input type="checkbox" name ="dia" value="martes" <%if(martes == true) {%>checked<%}%>>Martes</label>
 							</div>
 							<div>
-								<label><input type="checkbox" name ="dia" value="miercoles">Mi&eacute;rcoles</label>
-								<label><input type="checkbox" name ="dia" value="jueves">Jueves</label>
+								<label><input type="checkbox" name ="dia" value="miercoles" <%if(miercoles == true) {%>checked<%}%>>Mi&eacute;rcoles</label>
+								<label><input type="checkbox" name ="dia" value="jueves" <%if(jueves == true) {%>checked<%}%>>Jueves</label>
 							</div>
 							<div>
-								<label><input type="checkbox" name ="dia" value="viernes">Viernes</label>
-								<label><input type="checkbox" name ="dia" value="sabado">S&aacute;bado</label>
+								<label><input type="checkbox" name ="dia" value="viernes" <%if(viernes == true) {%>checked<%}%>>Viernes</label>
+								<label><input type="checkbox" name ="dia" value="sabado" <%if(sabado == true) {%>checked<%}%>>S&aacute;bado</label>
 							</div>
 						</div>
-						<span class="horas">
-							<label for="hora">HORA(S)</label>
-							<div id="hora1">
-								<input name="hora" type="time" required></input>
-							</div>
-							<div><button type="button" onclick="addhora(1)">A&Ntilde;ADIR HORA</button></div>
-						</span>
+							<span class="horas">
+								<label for="hora">HORA(S)</label><%
+							if(!horas.isEmpty()) {%>
+								<div id="hora1">
+									<input name="hora" type="time" value="<%=formato.format(horas.get(0))%>" required></input>
+								</div><%
+								
+								cont = 1;
+								for(Date hora: horas){
+									if(hora != horas.get(0)){
+										cont++;%>
+										<span id="hora<%=cont%>">
+											<input type="time" name="hora" value="<%=formato.format(hora)%>" required><button type="button" style="vertical-align: text-bottom;" onclick="eliminar_hora('hora<%=cont%>')">Eliminar</button>
+										</span><%
+									}
+								}
+							}
+							else {%>
+								<span id="hora<%=cont%>">
+									<input type="time" name="hora" required>
+								</span><%
+							}%>
+								<div><button type="button" onclick="addhora(<%=cont%>)">A&Ntilde;ADIR HORA</button></div>
+							</span>
 					</div>
 				</div> 
 			</form>

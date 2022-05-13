@@ -63,7 +63,6 @@ public class ClaseDAO {
 			add.executeUpdate();
 			
 			// Incluimos los horarios
-			
 			PreparedStatement add_hora = con.prepareStatement(this._statements.getProperty("aniadir_hora"));
 			
 			for(String dia: clase.get_dias()) {
@@ -193,6 +192,7 @@ public class ClaseDAO {
 				Date fecha = formato_bd.parse(horas.getString(2));
 				
 				if(!dia.equals(horas.getString(1))) {
+					System.out.println(dia);
 					dia = horas.getString(1);
 					clase.addDia(dia);
 				}
@@ -221,5 +221,71 @@ public class ClaseDAO {
 		
 		return clase;
 	}
-	
+
+	public int modificarClase(ClaseDTO clase_original, ClaseDTO clase_mod) {
+		
+		try {
+			PreparedStatement modificar_clase;
+			
+			if(!clase_original.get_instructor().equals(clase_mod.get_instructor())) {
+				//Comprobamos que el instructor indicado es correcto
+				PreparedStatement get_instructor = con.prepareStatement(this._statements.getProperty("get_instructor"));
+				get_instructor.setString(1, clase_mod.get_instructor());
+				ResultSet instructor = get_instructor.executeQuery();
+				
+				if(!instructor.next())
+					return -1;
+				
+				else if(!instructor.getString(2).equals("instr"))
+					return -2;
+				
+				modificar_clase = con.prepareStatement(this._statements.getProperty("modificar_clase_instr"));
+				modificar_clase.setString(7, clase_mod.get_instructor());
+				modificar_clase.setInt(8, clase_mod.get_id());
+			}
+			else {
+				modificar_clase = con.prepareStatement(this._statements.getProperty("modificar_clase"));
+				modificar_clase.setInt(7, clase_mod.get_id());
+			}
+			
+			//titulo = ?, descripcion = ?, categoria = ?, duracion = ?, capacidad = ?, ubicacion = ?
+			modificar_clase.setString(1, clase_mod.get_titulo());
+			modificar_clase.setString(2, clase_mod.get_descripcion());
+			modificar_clase.setString(3, clase_mod.get_categoria());
+			modificar_clase.setInt(4, clase_mod.get_duracion());
+			modificar_clase.setInt(5, clase_mod.get_capacidad());
+			modificar_clase.setString(6, clase_mod.get_ubicacion());
+			
+			modificar_clase.executeUpdate();
+			
+			PreparedStatement eliminar_horas = con.prepareStatement(this._statements.getProperty("eliminar_horas"));
+			eliminar_horas.setInt(1, clase_mod.get_id());
+			eliminar_horas.executeUpdate();
+			
+			// Incluimos los horarios
+			PreparedStatement add_hora = con.prepareStatement(this._statements.getProperty("actualizar_hora"));
+			
+			for(String dia: clase_mod.get_dias()) {
+				System.out.println(dia);
+				
+				for(Date hora: clase_mod.get_horas()) {
+					String hora_fecha = clase_mod.get_format().format(hora);
+					String fecha = "01,01,0001 " + hora_fecha;
+					
+					add_hora.setString(1, dia);
+					add_hora.setString(2, fecha);
+					add_hora.setInt(3, clase_mod.get_id());
+					add_hora.addBatch();
+				}
+			}
+			
+			add_hora.executeBatch();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return -3;
+		}
+		
+		return 0;
+	}
 }

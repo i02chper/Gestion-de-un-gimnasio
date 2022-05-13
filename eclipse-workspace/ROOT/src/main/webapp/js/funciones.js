@@ -38,7 +38,7 @@ function eliminar_hora(id_hora){
 function addhora(id_hora){
 	var id = id_hora + 1;
 	
-	var container = document.getElementsByClassName("nueva_clase")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var horas = document.getElementsByClassName("horas")[0];
 	var aniadir = horas.lastElementChild;
 	
@@ -106,7 +106,7 @@ function show_selected(){
 /* Cuando se cambia el tipo de espectáculo siendo añadido a 'puntual', los elementos
 // de los demás tipos son eliminados
 function show_puntual(){	
-	var container = document.getElementsByClassName("nueva_clase")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	var temporada = document.getElementsByClassName("temporada");
 	var  = document.getElementsByClassName("multiple");
@@ -126,7 +126,7 @@ function show_puntual(){
 // Cuando se cambia el tipo de espectáculo siendo añadido a 'temporada', los elementos
 // de los demás tipos son eliminados
 function show_temporada(){	
-	var container = document.getElementsByClassName("nueva_clase")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	
 	var puntual = document.getElementsByClassName("puntual");
@@ -147,7 +147,7 @@ function show_temporada(){
 // Cuando se cambia el tipo de espectáculo siendo añadido a 'múltiple', los elementos
 // de los demás tipos son eliminados
 function show_multiple(){	
-	var container = document.getElementsByClassName("nueva_clase")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	
 	var temporada = document.getElementsByClassName("temporada");

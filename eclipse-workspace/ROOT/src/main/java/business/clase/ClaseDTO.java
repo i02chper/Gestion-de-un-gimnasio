@@ -150,4 +150,22 @@ public class ClaseDTO {
 			e.printStackTrace();
 		}
 	}
+	
+	public Boolean es_igual(ClaseDTO clase) {
+		Boolean iguales = true;
+		
+		if(!this._titulo.equals(clase.get_titulo()) || !this._descripcion.equals(clase.get_descripcion()) || !this._categoria.equals(clase.get_categoria()) ||
+		   this._capacidad != clase.get_capacidad() || this._duracion != clase.get_duracion() || !this._instructor.equals(clase.get_instructor()) || !this._ubicacion.equals(clase.get_ubicacion()))
+			iguales = false;
+			
+		for(String dia: clase.get_dias())
+			if(!this._dias.contains(dia))
+				iguales = false;
+		
+		for(Date hora: clase.get_horas())
+			if(!this._horas.contains(hora))
+				iguales = false;
+		
+		return iguales;
+	}
 }

@@ -15,72 +15,87 @@
 		<%
 		mensaje = (String) session.getAttribute("error");
 		
-		if(user != null && !user.getNombre().equals("")){
-			
-			if(user.getTipo().equals("administrador")){%>
-				<div class="header">
-					<a href="">
-						<div class="home"></div>
-					</a>
-					<a href="/logout" onclick="return confirm('¿Seguro que deseas cerrar sesi&oacute;n?')">
-						<div class="btn">CERRAR SESI&Oacute;N</div>
-					</a>
-					<a href="/modificar">
-						<div class="btn">MODIFICAR PERFIL</div>
-					</a>
-					<a href="/getSesiones">
-						<div class="btn">GESTIONAR SESIONES</div>
-					</a>
-					<a href="/nuevoEspectaculo">
-						<div class="btn">A&Ntilde;ADIR ESPECT&Aacute;CULO</div>
-					</a>
-					<a href="/infoUsuarios">
-						<div class="btn">INFORMACI&Oacute;N USUARIOS</div>
-					</a>
-				</div><%
-			}
-			else {%>
+		if(mensaje == null)
+			response.sendRedirect("/");
+		
+		//Si NO estamos logueados
+		if(user == null || user.getNombre().equals("")) { %>
+		<div class="header">
+			<a href="/">
+				<div class="home"></div>
+			</a>	
+			<a href="/login">
+				<div class="btn">
+					INICIAR SESI&Oacute;N
+				</div>
+			</a>
+		
+			<a href="/signup">
+				<div class="btn">
+					REGISTRARSE
+				</div>
+			</a>
+			<a href="/getClases">
+				<div class="btn">
+					CLASES DISPONIBLES
+				</div>
+			</a>
+		</div>
+		<%}
+		
+		//En caso contrario
+		else {%>
 				<div class="header">
 					<a href="/">
 						<div class="home"></div>
 					</a>
-					<a href="/logout" onclick="return confirm('¿Seguro que deseas cerrar sesi&oacute;n?')">
+					<a href="/perfil">
+						<div class="btn"><%=user.getNombre()%></div>
+					</a><%
+			//ADMINISTRADOR
+			if(user.getTipo().equals("admin")){%>
+					<a href="/getClases">
+						<div class="btn">GESTIONAR CLASES</div>
+					</a>
+					<a href="/gestionarNovedades">
+						<div class="btn">GESTIONAR NOVEDADES</div>
+					</a>
+					<a href="/logout">
 						<div class="btn">CERRAR SESI&Oacute;N</div>
 					</a>
-					<a href="/modificar">
-						<div class="btn">MODIFICAR PERFIL</div>
+				</div> 
+		  <%}
+			//INSTRUCTOR
+			else if(user.getTipo().equals("instr")){%>
+			
+					<a href="/getClases">
+						<div class="btn">GESTIONAR CLASES</div>
 					</a>
-					<a href="/buscar">
-						<div class="btn">BUSCAR</div>
-				  	</a>
-				  	<a href="/espectaculos">
-						<div class="btn">REDACTAR CR&Iacute;TICA</div>
-				  	</a>
-				  	<a href="/getCriticas"">
-						<div class="btn">CONSULTAR CR&Iacute;TICAS</div>
-				  	</a>
+					<a href="/modificar">
+						<div class="btn">GESTIONAR RUTINAS</div>
+					</a>
+					<a href="/logout">
+						<div class="btn">CERRAR SESI&Oacute;N</div>
+					</a>
 				</div><%
 			}
-		}
-		else {%>
-			<div class="header">
-				<a href="/">
-					<div class="home"></div>
-				</a>	
-				<a href="/login">
-					<div class="btn">
-						ACCEDER
-					</div>
-				</a>
-			
-				<a href="/signup">
-					<div class="btn">
-						REGISTRARSE
-					</div>
-				</a>
-			</div><%
-		}
-		%>
+			//SOCIO
+			else{%>
+					<a href="/logout">
+						<div class="btn">CERRAR SESI&Oacute;N</div>
+					</a>
+					<a href="/logout">
+						<div class="btn">RESERVAS</div>
+					</a>
+					<a href="/modificar">
+						<div class="btn">RUTINAS</div>
+					</a>
+					<a href="/getClases">
+						<div class="btn">CLASES DISPONIBLES</div>
+					</a>
+				</div><%
+		  	}
+		}%>
 		<div class="info">
 			<h3 class="error">ERROR</h3>
 			<p><%=mensaje%></p>
@@ -89,5 +104,7 @@
 				<button type="button">Volver al inicio</button>
 			</a>
 		</div>
+		
+	<%session.setAttribute("error", null);%>
 	</body>
 </html>
