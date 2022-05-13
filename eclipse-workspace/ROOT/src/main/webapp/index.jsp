@@ -20,7 +20,10 @@
 	<div class="header">
 		<a href="/">
 			<div class="home"></div>
-		</a>	
+		</a>
+		
+		
+			
 		<a href="/login">
 			<div class="btn">
 				INICIAR SESI&Oacute;N
@@ -32,7 +35,77 @@
 				REGISTRARSE
 			</div>
 		</a>
+		
+		<a href="/contacto">
+			<div class="btn">
+				CONTACTO
+			</div>
+		</a>
+		
+		<a href="/tarifas">
+			<div class="btn">
+				TARIFAS
+			</div>
+		</a>
+		
+		<a href="/caracteristicas">
+			<div class="btn">
+				CARACTER&Iacute;STICAS
+			</div>
+		</a>
 	</div>
+	<div class="informacion">
+		<div class="titulo"> ALWAYS GYM</div>
+		<div class="subtitulo">Siempre en forma<br></div>
+		<div class="columna"> ACTIVIDADES
+		<a href="/caracteristicas">
+			<div class="btn">
+				SPINNING
+			</div>
+		</a>
+		<a href="/caracteristicas">
+			<div class="btn">
+				BOXEO
+			</div>
+		</a>
+		<a href="/caracteristicas">
+			<div class="btn">
+				YOGA
+			</div>
+		</a>
+		<a href="/caracteristicas">
+			<div class="btn">
+				PILATES
+			</div>
+		</a>
+		</div>
+		<div>
+			<img src="../img/gym.jpg" alt="Always Gym" width="450">
+		</div>
+	</div>
+	
+	<div><hr style="width:75%;"></div>
+	
+	<div class="footer">
+		<div class="titulo"> NOVEDADES</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		
+	</footer>
+	
+	
+	
+	
+
+
+	
 	<%}
 	
 	//En caso contrario
@@ -76,7 +149,19 @@
 				<a href="/modificar">
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
-			</div><%
+			</div>
+			<footer>
+				<div class="titulo"> NOVEDADES</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>		
+			</footer><%
 		}
 		//SOCIO
 		else{%>
@@ -92,8 +177,21 @@
 				<a href="/modificar">
 					<div class="btn">RUTINAS</div>
 				</a>
-			</div><%
+			</div>
+			<footer>
+				<div class="titulo"> NOVEDADES</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>
+				<div class="columna-footer">
+					<p>Hola Mundo</p>
+				</div>		
+			</footer><%
 	  	}
 	}%>
+	
   </body>
 </html>
