@@ -84,28 +84,7 @@
 		</div>
 	</div>
 	
-	<div><hr style="width:75%;"></div>
-	
-	<div class="footer">
-		<div class="titulo"> NOVEDADES</div>
-		<div class="columna-footer">
-			<p>Hola Mundo</p>
-		</div>
-		<div class="columna-footer">
-			<p>Hola Mundo</p>
-		</div>
-		<div class="columna-footer">
-			<p>Hola Mundo</p>
-		</div>
-		
-	</footer>
-	
-	
-	
-	
 
-
-	
 	<%}
 	
 	//En caso contrario
@@ -133,6 +112,35 @@
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
 			</div>
+			
+			<div class="informacion">
+				<div class="titulo"> BIENVENIDO: <%=user.getNombre()%></div>
+				<div class="subtitulo">Área el administrador<br><br><br></div>
+				<div class="columna_adm"> Área de novedades: <br>
+				<ul>
+				  <li class="lista">Novedad 1</li>
+				  <li class="lista">Novedad 2</li>
+				  <li class="lista">Novedad 3</li>
+				</ul>
+				</div>
+				
+				<div class="columna_adm"> Área de rutinas: <br>
+				<ul>
+				  <li class="lista">Rutina socio 1</li>
+				  <li class="lista">Rutina socio 2</li>
+				  <li class="lista">Rutina socio 3</li>
+				</ul>
+				</div>
+				
+				<div class="columna_adm"> Área de facturación: <br>
+				<ul>
+				  <li class="lista">Factura 1</li>
+				  <li class="lista">Factura 2</li>
+				  <li class="lista">Factura 3</li>
+				</ul>
+				</div>
+				
+			</div>
 	  <%}
 		//INSTRUCTOR
 		else if((tipo = user.getTipo()).equals("instr")){%>
@@ -150,19 +158,24 @@
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
 			</div>
-			<footer>
-				<div class="titulo"> NOVEDADES</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
+			
+			<div class="informacion">
+				<div class="titulo"> BIENVENIDO: <%=user.getNombre()%></div>
+				<div class="subtitulo">Área el instructor<br><br><br></div>
+				<div class="columna"> Estas son las rutinas de tus socios asignados: <br>
+				<ul>
+				  <li class="lista">Rutina socio 1</li>
+				  <li class="lista">Rutina socio 2</li>
+				  <li class="lista">Rutina socio 3</li>
+				</ul>
 				</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
+				<div>
+					<img src="../img/instructor.jpg" alt="Always Gym" width="450">
 				</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
-				</div>		
-			</footer><%
-		}
+			</div>
+			
+			
+		<%		}
 		//SOCIO
 		else{%>
 				<a href="/logout">
@@ -178,20 +191,40 @@
 					<div class="btn">RUTINAS</div>
 				</a>
 			</div>
-			<footer>
-				<div class="titulo"> NOVEDADES</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
+			
+			<div class="informacion">
+				<div class="titulo"> BIENVENIDO: <%=user.getNombre()%></div>
+				<div class="subtitulo">Nos complace volver a verte por Always Gym<br><br><br></div>
+				<div class="columna"> Estas son tus rutinas de hoy: <br>
+				<ul>
+				  <li class="lista">Rutina número 1</li>
+				  <li class="lista">Rutina número 2</li>
+				  <li class="lista">Rutina número 3</li>
+				</ul>
 				</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
+				<div>
+					<img src="../img/socio.jpg" alt="Always Gym" width="450">
 				</div>
-				<div class="columna-footer">
-					<p>Hola Mundo</p>
-				</div>		
-			</footer><%
+			</div>
+			
+			
+<%
 	  	}
 	}%>
+	
+	<div class="footer">
+		<div class="titulo"> NOVEDADES</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		<div class="columna-footer">
+			<p>Hola Mundo</p>
+		</div>
+		
+	</div>
 	
   </body>
 </html>
