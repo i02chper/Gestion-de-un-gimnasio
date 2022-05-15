@@ -119,7 +119,7 @@ a {
 	color: #dc4141;
 }
 
-.login, .signup, .nuevo_espectaculo, .modificar_perfil, .info, .busqueda {
+.login, .signup, .clase, .modificar_perfil, .info, .busqueda {
 	position: absolute;
 	display: grid;
 	top: 200px;
@@ -137,7 +137,7 @@ a {
 }
 
 .login input[type="text"], .login input[type="password"], .signup input[type="text"], .signup input[type="password"],
-.nuevo_espectaculo input, .nuevo_espectaculo select, .nuevo_espectaculo option, .modificar_perfil input, .critica input,
+.clase input, .clase select, .clase option, .modificar_perfil input, .critica input,
 .nueva_critica input, .busqueda input {
 	font-size: 30px;
 	width: fit-content;
@@ -190,7 +190,7 @@ form div {
 	display: inline-grid;
 }
 
-.login form, .signup form, .nuevo_espectaculo form, .modificar_perfil form, .critica form, .nueva_critica form, .busqueda form {
+.login form, .signup form, .clase form, .modificar_perfil form, .critica form, .nueva_critica form, .busqueda form {
 	display: ruby;
 	left: 0;
 	right: 0;
@@ -200,7 +200,7 @@ form div {
 	font-size: 30px;
 }
 
-.signup input[type="radio"], .nuevo_espectaculo input[type="radio"], .nueva_critica input[type="radio"], .critica input[type="radio"] {
+.signup input[type="radio"], .clase input[type="radio"], .nueva_critica input[type="radio"], .critica input[type="radio"] {
 	height: 20px;
 	width: 20px;
 }
@@ -209,11 +209,11 @@ form div {
 	width: 100%;
 }
 
-.multiple {
+.horas {
 	display: contents;
 }
 
-.multiple button{
+.horas button{
 	width: fit-content;
 	margin-top: 10px;
 	margin-left: 30px;
@@ -382,6 +382,54 @@ form div {
 	margin-bottom: 0;
 }
 
+.dias {
+	display: block;
+}
+
+
+.dias input[type="checkbox"] {
+	height:20px;
+	width:20px;
+}
+
+.horario {
+	display: flex;
+	left: 10px;
+}
+
+.horario .dia {
+	height: fit-content;
+	width: 30%;
+	padding: 0 20px 0px 20px;
+}
+
+.dia p {
+	margin: 0;
+}
+
+.aniadir_clase {
+	position: absolute;
+	top: 120px;
+	display: block;
+	float: right;
+	line-height: 100px;
+	width: fit-content;
+	background-color: #353535;
+	font-family: 'Poppins';
+	font-size: 30px;
+	font-weight: 50;
+	text-align:center;
+	transition: 0.2s;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.aniadir_clase:hover{
+	background-color: #dc4141;
+	transition: 0.2s;
+}
+
+
 
 .columna {
   width:33%;
@@ -421,3 +469,4 @@ form div {
 	padding-left: 20px;
 	padding-right: 20px;	
 }
+

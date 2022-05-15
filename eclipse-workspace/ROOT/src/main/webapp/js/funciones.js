@@ -30,65 +30,66 @@ function exito_valorar(){
 }
 
 // Elimina el input de tipo datetime-local indicado por el ID pasado por parámetro
-function eliminar_fecha(id_fecha){
-	document.getElementById(id_fecha).remove();
+function eliminar_hora(id_hora){
+	document.getElementById(id_hora).remove();
 }
 
 //Añade una fecha al view de un espectáculo múltiple siendo registrado en el sistema
-function addfecha(id_fecha){
-	var id = id_fecha + 1;
+function addhora(id_hora){
+	var id = id_hora + 1;
 	
-	var container = document.getElementsByClassName("nuevo_espectaculo")[0];
-	var multiple = document.getElementsByClassName("multiple")[0];
-	var aniadir = multiple.lastElementChild;
+	var container = document.getElementsByClassName("clase")[0];
+	var horas = document.getElementsByClassName("horas")[0];
+	var aniadir = horas.lastElementChild;
 	
 	//Creamos un span que contendrá la fecha y su botón de eliminar
-	var nueva_fecha = document.createElement("span");
-	nueva_fecha.setAttribute("id", "fecha" + id);
+	var nueva_hora = document.createElement("span");
+	nueva_hora.setAttribute("id", "hora" + id);
 	
 	//Creamos el botón de eliminar
 	var eliminar = document.createElement("button");
 	eliminar.setAttribute("type", "button");
 	eliminar.innerText = "Eliminar";
 	eliminar.style.verticalAlign = "text-bottom";
-	eliminar.setAttribute("onclick", "eliminar_fecha(" + "'fecha" + id + "')");
+	eliminar.setAttribute("onclick", "eliminar_hora(" + "'hora" + id + "')");
 	
 	//Creamos la fecha
-	var fecha = document.createElement("input");
-	fecha.setAttribute("type", "datetime-local");
-	fecha.setAttribute("name", "fecha_m");
-	fecha.required = true;
+	var hora = document.createElement("input");
+	hora.setAttribute("type", "time");
+	hora.setAttribute("name", "hora");
+	hora.required = true;
 	
 	//Metemos la fecha y el botón de eliminar en el span
-	nueva_fecha.appendChild(fecha);
-	nueva_fecha.appendChild(eliminar);
+	nueva_hora.appendChild(hora);
+	nueva_hora.appendChild(eliminar);
 	
 	aniadir.remove();
-	aniadir.children[0].setAttribute("onclick", "addfecha(" + id + ")");
+	aniadir.children[0].setAttribute("onclick", "addhora(" + id + ")");
 	
-	multiple.appendChild(nueva_fecha);
-	multiple.appendChild(aniadir);
+	horas.appendChild(nueva_hora);
+	horas.appendChild(aniadir);
 };
 
 //Algunas variables que tienen que ser globales
 var puntual;
 var temporada;
-var multiple;
+var horas;
 var enviar;
 
-// Enseña los campos a rellenar según el tipo de espectáculo que esté siendo creado
+/* Enseña los campos a rellenar según el tipo de espectáculo que esté siendo creado
+ * DEPRECATED 
 function show_selected(){
 	var tipo = document.getElementsByName("tipo");
 	
 	puntual = document.getElementsByClassName("puntual")[0];
 	temporada = document.getElementsByClassName("temporada")[0];
-	multiple = document.getElementsByClassName("multiple")[0];
+	horas = document.getElementsByClassName("horas")[0];
 	enviar = document.getElementsByClassName("control")[0];
 	
 	//PUNTUAL: quitamos los de temporada y múltiples
 	if(tipo[0].checked == true){
 		temporada.remove();
-		multiple.remove();
+		horas.remove();
 	}
 	//TEMPORADA: quitamos los puntuales y múltiples
 	else if(tipo[1].checked == true){
@@ -100,15 +101,15 @@ function show_selected(){
 		puntual.remove();
 		temporada.remove();
 	}
-}
+}*/
 
-// Cuando se cambia el tipo de espectáculo siendo añadido a 'puntual', los elementos
+/* Cuando se cambia el tipo de espectáculo siendo añadido a 'puntual', los elementos
 // de los demás tipos son eliminados
 function show_puntual(){	
-	var container = document.getElementsByClassName("nuevo_espectaculo")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	var temporada = document.getElementsByClassName("temporada");
-	var multiple = document.getElementsByClassName("multiple");
+	var  = document.getElementsByClassName("multiple");
 	
 	enviar.remove();
 	
@@ -125,7 +126,7 @@ function show_puntual(){
 // Cuando se cambia el tipo de espectáculo siendo añadido a 'temporada', los elementos
 // de los demás tipos son eliminados
 function show_temporada(){	
-	var container = document.getElementsByClassName("nuevo_espectaculo")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	
 	var puntual = document.getElementsByClassName("puntual");
@@ -146,7 +147,7 @@ function show_temporada(){
 // Cuando se cambia el tipo de espectáculo siendo añadido a 'múltiple', los elementos
 // de los demás tipos son eliminados
 function show_multiple(){	
-	var container = document.getElementsByClassName("nuevo_espectaculo")[0];
+	var container = document.getElementsByClassName("clase")[0];
 	var form = document.getElementById("tipo_elementos");
 	
 	var temporada = document.getElementsByClassName("temporada");
@@ -163,6 +164,7 @@ function show_multiple(){
 	form.appendChild(multiple);
 	container.appendChild(enviar);
 }
+*/
 
 // Función para cancelar una sesión de un espectáculo múltiple
 function cancelar(id){

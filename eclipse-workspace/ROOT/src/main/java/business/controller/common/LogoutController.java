@@ -27,14 +27,11 @@ public class LogoutController extends HttpServlet {
 		UserBean usuario = (UserBean) sesion.getAttribute("user");
 		String redireccionar = "/";
 		
-		if(usuario != null && usuario.getNombre().equals(""))
-			redireccionar = "/login";
+		if(usuario != null && !usuario.getNombre().equals(""))
+			sesion.setAttribute("user", null);
 		
-		else {			
-			usuario.setNombre("");
-			usuario.setCorreo("");
-			usuario.setTipo("");
-		}
+		else
+			redireccionar = "/login";
 		
 		response.sendRedirect(redireccionar);
 	}

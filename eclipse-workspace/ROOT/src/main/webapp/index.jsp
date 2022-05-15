@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.time.LocalDateTime,java.time.format.DateTimeFormatter,java.util.ArrayList,business.user.UserInfo,data.dao.UserDAO" %>
+<%@ page import="business.user.UserInfo,data.dao.UserDAO" %>
 <jsp:useBean id="user" class="display.javabean.UserBean" scope="session"/>
 <!DOCTYPE html>
 <html>
@@ -35,6 +35,10 @@
 				REGISTRARSE
 			</div>
 		</a>
+
+		<a href="/getClases">
+			<div class="btn">
+				CLASES DISPONIBLES
 		
 		<a href="/contacto">
 			<div class="btn">
@@ -88,26 +92,28 @@
 	<%}
 	
 	//En caso contrario
-	else {
-		//ADMINISTRADOR
-		%>	<div class="header">
+	else {%>
+			<div class="header">
 				<a href="/">
 					<div class="home"></div>
 				</a>
 				<a href="/perfil">
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
-				
+		//ADMINISTRADOR
 		if((tipo = user.getTipo()).equals("admin")){%>
-				<a href="/getSesiones">
+				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
-				<a href="/nuevoEspectaculo">
+				<a href="/gestionarNovedades">
 					<div class="btn">GESTIONAR NOVEDADES</div>
 				</a>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
 				</a>
+
+			</div> 
+
 				<a href="/modificar">
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
@@ -141,11 +147,12 @@
 				</div>
 				
 			</div>
+
 	  <%}
 		//INSTRUCTOR
 		else if((tipo = user.getTipo()).equals("instr")){%>
 		
-				<a href="/logout">
+				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
 				<a href="/modificar">
@@ -154,6 +161,10 @@
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
 				</a>
+
+			</div><%
+		}
+
 				<a href="/modificar">
 					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
@@ -176,13 +187,11 @@
 			
 			
 		<%		}
+
 		//SOCIO
 		else{%>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
-				</a>
-				<a href="/modificar">
-					<div class="btn">MODIFICAR PERFIL</div>
 				</a>
 				<a href="/logout">
 					<div class="btn">RESERVAS</div>
@@ -190,6 +199,12 @@
 				<a href="/modificar">
 					<div class="btn">RUTINAS</div>
 				</a>
+
+				<a href="/getClases">
+					<div class="btn">CLASES DISPONIBLES</div>
+				</a>
+			</div><%
+
 			</div>
 			
 			<div class="informacion">
@@ -209,6 +224,7 @@
 			
 			
 <%
+
 	  	}
 	}%>
 	
