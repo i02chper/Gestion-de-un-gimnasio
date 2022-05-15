@@ -111,4 +111,4 @@ Para mostrar nuestra aplicación web hemos contratado un dominio para nuestro se
 #### Spring Backlog
 ![Sprint_Backlog](/SCRUM/CapturasSprint/SprintBacklogImplementación.png)
 #### Burndown Chart
-![Burndown_chart]
+![Burndown_chart](/SCRUM/CapturasSprint/BurndownChartImplementación.png)
