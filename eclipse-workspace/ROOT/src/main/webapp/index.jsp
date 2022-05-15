@@ -115,7 +115,7 @@
 			
 			<div class="informacion">
 				<div class="titulo"> BIENVENIDO: <%=user.getNombre()%></div>
-				<div class="subtitulo">Área el administrador<br><br><br></div>
+				<div class="subtitulo">Área del administrador<br><br><br></div>
 				<div class="columna_adm"> Área de novedades: <br>
 				<ul>
 				  <li class="lista">Novedad 1</li>
@@ -124,11 +124,11 @@
 				</ul>
 				</div>
 				
-				<div class="columna_adm"> Área de rutinas: <br>
+				<div class="columna_adm"> Área de clases: <br>
 				<ul>
-				  <li class="lista">Rutina socio 1</li>
-				  <li class="lista">Rutina socio 2</li>
-				  <li class="lista">Rutina socio 3</li>
+				  <li class="lista">Spining</li>
+				  <li class="lista">Boxeo</li>
+				  <li class="lista">Pilates</li>
 				</ul>
 				</div>
 				
