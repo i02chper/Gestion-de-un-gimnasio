@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="/css/general.css">
 	<script type="text/javascript" src="/js/funciones.js"></script>
   </head>
-  <body>
+  <body onload="set_size()">
     <%! String next; %> 
     <div class="header">
 		<a href="/">

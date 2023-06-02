@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/css/general.css">
 	<script type="text/javascript" src="/js/funciones.js"></script>
   </head>
-  <body>
+  <body onload="set_size()">
 	<body onload="set_size()">
     <%!String redireccionar;
        ArrayList<ClaseDTO> clases;
@@ -25,15 +25,12 @@
 			</a><%
 			
 		if(user != null && !user.getNombre().equals("")) { %>
-			<a href="/perfil">
+			<a href="/getInfo">
 				<div class="btn"><%=user.getNombre()%></div>
 			</a><%
 		}
 		// ADMINISTRADOR o INSTRUCTOR	
 		if(user != null && (user.getTipo().equals("instr") || user.getTipo().equals("admin"))){%>
-			<a href="/nuevoEspectaculo">
-				<div class="btn">GESTIONAR NOVEDADES</div>
-			</a>
 			<a href="/logout">
 				<div class="btn">CERRAR SESI&Oacute;N</div>
 			</a><%
@@ -43,10 +40,10 @@
 			<a href="/logout">
 				<div class="btn">CERRAR SESI&Oacute;N</div>
 			</a>
-			<a href="/logout">
+			<a href="/reservas">
 				<div class="btn">RESERVAS</div>
 			</a>
-			<a href="/modificar">
+			<a href="/rutinas">
 				<div class="btn">RUTINAS</div>
 			</a><%
 	  	}

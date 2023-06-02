@@ -124,32 +124,6 @@ public class UserDAO {
 	}*/
 	
 	/**
-	 * Método encargado de devolver el registro de un usuario
-	 * @param usuario Nick del usuario
-	 * @return Cadena con el registro del usuario
-	 */
-	public String getRegistro(String usuario) {
-		String registro = "";
-		
-		try {
-			PreparedStatement get_registro = con.prepareStatement(this.statements.getProperty("get_registro"));
-			get_registro.setString(1, usuario);
-			
-			ResultSet reg = get_registro.executeQuery();
-			reg.next();
-			
-			registro = reg.getString(1);
-			
-			get_registro.close();
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return registro;
-	}
-	
-	/**
 	 * Método encargado de actualizar el log de un usuario
 	 * @param usuario Nick del usuario
 	 * @return Devuelve true si se ha actualizado con éxito o false en caso contrario
@@ -358,6 +332,36 @@ public class UserDAO {
 		}
 		
 		return true;
+	}
+	
+	public User get_user_info(String correo) {
+		User usuario = new User();
+		
+		try {
+			
+			PreparedStatement get_info = con.prepareStatement(this.statements.getProperty("get_info_usuario"));
+			get_info.setString(1, correo);
+			ResultSet usuario_rs = get_info.executeQuery();
+			
+			usuario_rs.next();
+			
+			//dni, nombre, apellidos, telefono, lesion
+			usuario.set_dni(usuario_rs.getString(1));
+			usuario.set_nombre(usuario_rs.getString(2));
+			usuario.set_apellidos(usuario_rs.getString(3));
+			usuario.set_telefono(usuario_rs.getString(4));
+			usuario.set_lesion(usuario_rs.getString(5));
+			usuario.set_correo(correo);
+			
+			if(usuario.get_lesion() == null)
+				usuario.set_lesion("");
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return usuario;
 	}
 }
 

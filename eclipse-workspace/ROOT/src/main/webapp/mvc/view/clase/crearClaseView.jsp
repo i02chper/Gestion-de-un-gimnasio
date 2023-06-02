@@ -18,7 +18,7 @@
 				<a href="/">
 					<div class="home"></div>
 				</a>
-				<a href="/perfil">
+				<a href="/getInfo">
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
 			
@@ -26,9 +26,6 @@
 		if(!user.getTipo().equals("socio")){%>
 				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
-				</a>
-				<a href="/nuevoEspectaculo">
-					<div class="btn">GESTIONAR NOVEDADES</div>
 				</a>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>

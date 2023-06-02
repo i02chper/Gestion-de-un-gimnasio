@@ -114,7 +114,7 @@ a {
 	color: #dc4141;
 }
 
-.login, .signup, .clase, .modificar_perfil, .info, .busqueda {
+.login, .signup, .clase, .modificar_perfil, .info, .busqueda, .novedad_form {
 	position: absolute;
 	display: grid;
 	top: 200px;
@@ -133,7 +133,7 @@ a {
 
 .login input[type="text"], .login input[type="password"], .signup input[type="text"], .signup input[type="password"],
 .clase input, .clase select, .clase option, .modificar_perfil input, .critica input,
-.nueva_critica input, .busqueda input {
+.nueva_critica input, .busqueda input, .novedad_form input {
 	font-size: 30px;
 	width: fit-content;
 	margin-left: 30px;
@@ -185,7 +185,7 @@ form div {
 	display: inline-grid;
 }
 
-.login form, .signup form, .clase form, .modificar_perfil form, .critica form, .nueva_critica form, .busqueda form {
+.login form, .signup form, .clase form, .modificar_perfil form, .critica form, .nueva_critica form, .busqueda form, .novedad_form form {
 	display: ruby;
 	left: 0;
 	right: 0;
@@ -277,7 +277,7 @@ form div {
 	left: 0;
 }
 
-.reseniable, .critica, .resultado {
+.reseniable, .critica, .resultado, .novedad {
 	height: fit-content;
 	width: 30%;
 	background-color: #f6f6f6;
@@ -423,4 +423,99 @@ form div {
 	transition: 0.2s;
 }
 
+.novedad {
+	width: 90%;
+}
 
+.novedad_form {
+	display: block;
+	width: 90%;
+}
+
+.novedad_form textarea {
+	font-family: 'Poppins';	
+	font-size: 20px;
+	height: 200px;
+	width: 100%;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+
+.novedad_form input {
+	width: 100%
+}
+
+.footer {
+  background-color: #dc4141;
+  display: flex;
+  position: static;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  color: white;
+  font-family: 'Poppins';
+  left: 0px;
+  margin-top: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.columna-footer {
+  width:fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  float:left;
+}
+
+.columna-footer p {
+	margin: 10px;
+}
+
+.lista {
+	color: #dc4141;
+	width: fit-content;
+	font-family: 'Poppins';
+	font-size: 15px;
+	text-align:center;
+	transition: 0.2s;
+	padding-left: 20px;
+	padding-right: 20px;	
+}
+
+.columna {
+  width:33%;
+  float:left;
+  padding-right: 20px;	
+}
+
+.informacion {
+	position: absolute;
+	height: auto;
+	width: 60%;
+	left: 0;
+	right: 0;
+	top: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f1f1f1;
+	font-family: 'Poppins';
+	font-size: 30px;
+	text-align: justify;
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	border-radius: 20px;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.titulo {
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.subtitulo {
+	text-align: center;
+	font-size: 20px;
+}

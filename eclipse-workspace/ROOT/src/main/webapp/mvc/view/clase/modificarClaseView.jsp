@@ -50,16 +50,13 @@
 				<a href="/">
 					<div class="home"></div>
 				</a>
-				<a href="/perfil">
+				<a href="/getInfo">
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
 			//ADMINISTRADOR
 			if(user.getTipo().equals("admin")){%>
 				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
-				</a>
-				<a href="/gestionarNovedades">
-					<div class="btn">GESTIONAR NOVEDADES</div>
 				</a>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
@@ -71,7 +68,7 @@
 				<a href="/getClases">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
-				<a href="/modificar">
+				<a href="/rutinas">
 					<div class="btn">GESTIONAR RUTINAS</div>
 				</a>
 				<a href="/logout">
@@ -180,7 +177,7 @@
 			</form>
 			<div class="control">
 				<button type="submit" form="clase">Modificar clase</input>
-				<button type="submit" form="eliminar">Eliminar clase</button>
+				<button type="submit" form="eliminar" onclick="return confirm('¿Seguro que desea eliminar esta clase?')">Eliminar clase</button>
 				<a href="/">
 					<button type="button">Volver</button>
 				</a>

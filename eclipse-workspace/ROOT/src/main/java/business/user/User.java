@@ -16,6 +16,7 @@ public class User {
 	private String _nombre;
 	private String _apellidos;
 	private String _correo;
+	private String _telefono;
 	private String _tipo;
 	private String _lesion;
 	DateTimeFormatter _formato;
@@ -28,6 +29,7 @@ public class User {
 		this._nombre = "";
 		this._apellidos = "";
 		this._correo = "";
+		this._telefono = "";
 		this._tipo = "";
 		this._lesion = "";
 		this._formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
@@ -127,6 +129,16 @@ public class User {
 	 */
 	public void set_lesion(String _lesion) {
 		this._lesion = _lesion;
+	}
+	
+	
+
+	public String get_telefono() {
+		return this._telefono;
+	}
+
+	public void set_telefono(String telefono) {
+		this._telefono = telefono;
 	}
 
 	/**

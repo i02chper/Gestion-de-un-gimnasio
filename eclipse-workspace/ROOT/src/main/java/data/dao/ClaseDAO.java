@@ -288,4 +288,24 @@ public class ClaseDAO {
 		
 		return 0;
 	}
+	
+	public boolean eliminarClase(int id_clase) {
+		
+		try {
+			
+			PreparedStatement eliminar_horas = con.prepareStatement(this._statements.getProperty("eliminar_horas"));
+			PreparedStatement eliminar_clase = con.prepareStatement(this._statements.getProperty("eliminar_clase"));
+			
+			eliminar_horas.setInt(1, id_clase);
+			eliminar_clase.setInt(1, id_clase);
+			
+			eliminar_horas.executeUpdate();
+			eliminar_clase.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

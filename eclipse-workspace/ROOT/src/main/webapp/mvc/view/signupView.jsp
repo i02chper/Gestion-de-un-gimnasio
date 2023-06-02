@@ -10,10 +10,10 @@
 		<script type="text/javascript" src="js/funciones.js"></script>
 	</head>
 	
-	<body>
+	<body onload="set_size()">
 		<%! String next; %> 
 		<div class="header">
-			<a href="">
+			<a href="/">
 				<div class="home"></div>
 			</a>
 			<a href="/login">
@@ -55,6 +55,6 @@
 					<a href=""><button type="button">Volver</button></a>
 				</span>
 			</div><%
-		}%>	
+		}%>
 	</body>
 </html>

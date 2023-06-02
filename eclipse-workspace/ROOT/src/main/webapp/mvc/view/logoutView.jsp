@@ -18,7 +18,7 @@
 					<a href="/">
 						<div class="home"></div>
 					</a>
-					<a href="/perfil">
+					<a href="/getInfo">
 						<div class="btn"><%=user.getNombre()%></div>
 					</a><%
 					
@@ -28,9 +28,6 @@
 					<a href="/getSesiones">
 						<div class="btn">GESTIONAR CLASES</div>
 					</a>
-					<a href="/nuevoEspectaculo">
-						<div class="btn">GESTIONAR NOVEDADES</div>
-					</a>
 				</div>
 		  <%}
 			//INSTRUCTOR
@@ -39,17 +36,17 @@
 					<a href="/logout">
 						<div class="btn">GESTIONAR CLASES</div>
 					</a>
-					<a href="/modificar">
+					<a href="/rutinas">
 						<div class="btn">GESTIONAR RUTINAS</div>
 					</a>
 				</div><%
 			}
 			//SOCIO
 			else{%>
-					<a href="/logout">
+					<a href="/reservas">
 						<div class="btn">RESERVAS</div>
 					</a>
-					<a href="/modificar">
+					<a href="/rutinas">
 						<div class="btn">RUTINAS</div>
 					</a>
 					<a href="/getClases">

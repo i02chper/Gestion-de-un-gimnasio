@@ -150,4 +150,45 @@
   	<servlet-name>modificarClase</servlet-name>
   	<url-pattern>/modificarClase</url-pattern>
 </servlet-mapping>
+
+<servlet>
+  	<servlet-name>crearNovedad</servlet-name>
+  	<jsp-file>/mvc/view/novedad/crearNovedadView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>crearNovedad</servlet-name>
+  	<url-pattern>/crearNovedad</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<servlet-name>modificarNovedad</servlet-name>
+  	<jsp-file>/mvc/view/novedad/modificarNovedadView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>modificarNovedad</servlet-name>
+  	<url-pattern>/modificarNovedad</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<servlet-name>perfil</servlet-name>
+  	<jsp-file>/mvc/view/perfilView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>perfil</servlet-name>
+  	<url-pattern>/perfil</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  	<servlet-name>rutinas</servlet-name>
+  	<jsp-file>/mvc/view/rutinas/rutinasView.jsp</jsp-file>
+</servlet>
+
+<servlet-mapping>
+  	<servlet-name>rutinas</servlet-name>
+  	<url-pattern>/rutinas</url-pattern>
+</servlet-mapping>
+
 </web-app>

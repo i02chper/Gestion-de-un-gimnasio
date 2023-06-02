@@ -24,16 +24,13 @@
 				<a href="/">
 					<div class="home"></div>
 				</a>
-				<a href="/perfil">
+				<a href="/getInfo">
 					<div class="btn"><%=user.getNombre()%></div>
 				</a><%
 				
 		if(user.getTipo().equals("admin")){%>
 				<a href="/getSesiones">
 					<div class="btn">GESTIONAR CLASES</div>
-				</a>
-				<a href="/nuevoEspectaculo">
-					<div class="btn">GESTIONAR NOVEDADES</div>
 				</a>
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
@@ -46,7 +43,7 @@
 				<a href="/logout">
 					<div class="btn">GESTIONAR CLASES</div>
 				</a>
-				<a href="/modificar">
+				<a href="/rutinas">
 					<div class="btn">GESTIONAR RUTINAS</div>
 				</a>
 				<a href="/logout">
@@ -59,10 +56,10 @@
 				<a href="/logout">
 					<div class="btn">CERRAR SESI&Oacute;N</div>
 				</a>
-				<a href="/logout">
+				<a href="/reservas">
 					<div class="btn">RESERVAS</div>
 				</a>
-				<a href="/modificar">
+				<a href="/rutinas">
 					<div class="btn">RUTINAS</div>
 				</a>
 				<a href="/getClases">
