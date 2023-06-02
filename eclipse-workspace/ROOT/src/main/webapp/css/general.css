@@ -22,7 +22,7 @@ a {
 	position: absolute;
 	height: 100px;
 	width: 100px;
-	background-image: url("../img/home.png");
+	background-image: url("../img/logo.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 80%;
@@ -33,7 +33,7 @@ a {
 }
 
 .header .home:hover {
-	background-image: url("../img/home_black.png");
+	background-image: url("../img/logo.png");
 	background-color: #f6f6f6;
 	transition: 0.2s;
 }
@@ -87,6 +87,11 @@ a {
 	font-size: 30px;
 }
 
+.subtitulo {
+	text-align: center;
+	font-size: 20px;
+}
+
 .informacion li{
 	padding-bottom: 20px;
 }
@@ -104,7 +109,7 @@ a {
 	display: inline-block;
 	height: 50px;
 	width: 50px;
-	background-image: url("../img/home.png");
+	background-image: url("../img/logo.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 80%;
@@ -381,6 +386,7 @@ form div {
 	display: block;
 }
 
+
 .dias input[type="checkbox"] {
 	height:20px;
 	width:20px;
@@ -445,6 +451,7 @@ form div {
 	width: 100%
 }
 
+<<<<<<< HEAD
 .footer {
   background-color: #dc4141;
   display: flex;
@@ -469,6 +476,35 @@ form div {
 
 .columna-footer p {
 	margin: 10px;
+=======
+
+.columna {
+  width:33%;
+  float:left;
+  padding-right: 20px;	
+}
+
+.columna_adm {
+  width:33%;
+  float:left;
+}
+
+.columna-footer {
+  width:33%;
+  float:left;
+  color: #dc4141;
+}
+
+.footer {
+  background-color: #dc4141;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+  font-family: 'Poppins';
+  left: 0px;
+>>>>>>> 21e2cd1c279f5a4b9ea197b9369f5b9f5ef97ed2
 }
 
 .lista {
@@ -482,6 +518,7 @@ form div {
 	padding-right: 20px;	
 }
 
+<<<<<<< HEAD
 .columna {
   width:33%;
   float:left;
@@ -519,3 +556,5 @@ form div {
 	text-align: center;
 	font-size: 20px;
 }
+=======
+>>>>>>> 21e2cd1c279f5a4b9ea197b9369f5b9f5ef97ed2
